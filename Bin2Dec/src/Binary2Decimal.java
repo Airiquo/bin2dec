@@ -8,6 +8,7 @@ public class Binary2Decimal {
         int [] bit8 = {128, 64, 32, 16, 8, 4, 2, 1}; 
 
         int trueInt = 1;
+        int decimal = 0;
 
         boolean isValid = true;
 
@@ -31,6 +32,7 @@ public class Binary2Decimal {
                 System.out.println("Error! Please only enter up to 8 digits");
                 continue;
             }
+
         //check if only contains 0's and 1's
             for(int i = 0; i < byteString.length(); i++){
                 char check = byteString.charAt(i);
@@ -40,25 +42,18 @@ public class Binary2Decimal {
                     break;
                 }
             }
-           
-        //store into an array
-        int[] byteArray = new int[byteString.length()];
-
-        //inserting into array
-        for(int i = 0; i < byteString.length(); i++){
-            byteArray[i] = byteString.charAt(i) - '0';
-        }
-
-        int decimal = 0;     
-
-        for(int i = 0; i < byteString.length(); i++){
-            if(byteArray[i] == trueInt){
-                decimal += bit8[i];
-                //System.out.println(decimal);
+            
+            //check each char and match with byte array
+            for(int i = 0; i < byteString.length(); i++){
+                char check = byteString.charAt(i);
+                if (check == '1'){
+                    decimal += bit8[i];
+                }
             }
-        }       
+
             if(isValid == true){ 
                 System.out.println("Decimal: " + decimal);
+                decimal -= decimal;
             }
         }
     }
